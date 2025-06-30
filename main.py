@@ -1,15 +1,6 @@
 import os
 import pandas as pd
-from utilities import (
-    predict, 
-    correction_anomalies_dates,
-    correction_anomalie_years_employed, 
-    nettoyage_gender,
-    map_col_binaires, 
-    convert_to_float, 
-    convert_to_df,
-    NEEDED_COLUMNS
-    )
+from utilities import predict, NEEDED_COLUMNS
 from fastapi import FastAPI, UploadFile, File, HTTPException
 import uvicorn
 

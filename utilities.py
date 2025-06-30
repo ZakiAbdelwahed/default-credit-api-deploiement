@@ -76,14 +76,6 @@ def map_col_binaires(df):
     df['CODE_GENDER'] = df['CODE_GENDER'].map({'F': 1, 'M': 0})
     return df
 
-# Convertir tous les chiffres en float
-def convert_to_float(X):
-    return X.astype(np.float64)
-
-# Convertir en DataFrame
-def convert_to_df(X):
-    return pd.DataFrame(X)
-
 def get_feature_names_from_column_transformer(
     ct: ColumnTransformer, original_features: List[str]
 ) -> List[str]:
@@ -186,6 +178,12 @@ def predict(df, seuil):
     Retourne:
     pd.DataFrame: Prédictions (probabilité, classe) et valeurs SHAP par variable originale
     """
+    # Pre-processing
+    df = correction_anomalies_dates(df).copy()
+    df = correction_anomalie_years_employed(df).copy()
+    df = nettoyage_gender(df).copy()
+    df = map_col_binaires(df).copy()
+
     # Mettre l'ID du demandeur de prêt en index
     df = df.set_index("SK_ID_CURR").copy()
 
