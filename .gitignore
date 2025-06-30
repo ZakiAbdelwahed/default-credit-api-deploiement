@@ -1,1 +1,7 @@
 .DS_Store
+# Fichiers de données volumineux
+Fichiers/Data/*.csv
+Fichiers/Data/*.xlsx
+Fichiers/Data/*.parquet
+*.csv
+*.xlsx
